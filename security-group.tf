@@ -264,4 +264,57 @@ resource "aws_security_group" "Data-elb" {
   }
 }
 
+# ---------------------------------------------------------------------------------------------------------------------
+# CREATE THE SECURITY GROUP THAT'S APPLIED TO EACH EC2 INSTANCE IN THE SmartSearch ASG
+# ---------------------------------------------------------------------------------------------------------------------
+resource "aws_security_group" "SmartSearch-instanceSG" {
+  name = "SmartSearch-SG"
+   vpc_id = "${aws_vpc.DAIP-VPC.id}"
+
+  # Inbound SSH
+  ingress {
+    from_port   = "22"
+    to_port     = "22"
+    protocol    = "tcp"
+    cidr_blocks = ["10.0.0.0/16"]
+  }
+
+  # Outbound All Protocols
+  egress {
+    from_port   = "0"
+    to_port     = "0"
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  lifecycle {
+    create_before_destroy = true
+  }
+}
+
+# ---------------------------------------------------------------------------------------------------------------------
+# CREATE A SECURITY GROUP THAT CONTROLS WHAT TRAFFIC CAN GO IN AND OUT OF THE SmartSearch ELB
+# ---------------------------------------------------------------------------------------------------------------------
+resource "aws_security_group" "SmartSearch-elb" {
+  name = "SmartSearch-elb"
+  vpc_id = "${aws_vpc.DAIP-VPC.id}"
+
+  # Allow all outbound
+  egress {
+    from_port   = 0
+    to_port     = 0
+    # -1 is semantically equivalent to "all." So all protocols are allowed
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  # Inbound HTTP from anywhere
+  ingress {
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+}
+
 

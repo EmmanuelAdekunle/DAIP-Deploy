@@ -135,4 +135,31 @@ resource "aws_elb" "Data-elb" {
     instance_protocol = "tcp"
   }
 }
+# ---------------------------------------------------------------------------------------------------------------------
+# CREATE AN ELB TO ROUTE TRAFFIC ACROSS THE SmartSearch AUTO SCALING GROUP
+# ---------------------------------------------------------------------------------------------------------------------
+resource "aws_elb" "SmartSearch-elb" {
+  name               = "SmartSearch-elb"
+  security_groups    = ["${aws_security_group.SmartSearch-instanceSG.id}"]
+ # availability_zones = ["${SmartSearch.aws_availability_zones.all.names}"]
+  subnets             = ["${aws_subnet.SmartSearch1-Subnet.id}", "${aws_subnet.SmartSearch2-Subnet.id}"]
+
+  # will work on this later
+   health_check {
+     healthy_threshold = 5
+     unhealthy_threshold = 5
+     timeout = 3
+     interval = 30
+     target = "TCP:22"
+   }
+
+  # This adds a listener for incoming HTTP requests.
+  listener {
+    lb_port           = "22"
+    lb_protocol       = "tcp"
+    instance_port     = "22"
+    instance_protocol = "tcp"
+  }
+}
+
 

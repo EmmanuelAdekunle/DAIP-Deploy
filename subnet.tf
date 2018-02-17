@@ -97,3 +97,23 @@ resource "aws_subnet" "Data2-Subnet" {
   cidr_block              = "10.0.55.0/24"
   map_public_ip_on_launch = "false"
 }
+# --------------------------------------------------------------------------------------------------------------------
+# CREATE SmartSearch 1 SUBNET
+# --------------------------------------------------------------------------------------------------------------------
+resource "aws_subnet" "SmartSearch1-Subnet" {
+  vpc_id                  = "${aws_vpc.DAIP-VPC.id}"
+  availability_zone       = "us-east-1a"
+  cidr_block              = "10.0.6.0/24"
+  map_public_ip_on_launch = "false"
+}
+
+# --------------------------------------------------------------------------------------------------------------------
+# CREATE SmartSearch 2 SUBNET
+# --------------------------------------------------------------------------------------------------------------------
+resource "aws_subnet" "SmartSearch2-Subnet" {
+  vpc_id                  = "${aws_vpc.DAIP-VPC.id}"
+  availability_zone       = "us-east-1b"
+  cidr_block              = "10.0.66.0/24"
+  map_public_ip_on_launch = "false"
+}
+

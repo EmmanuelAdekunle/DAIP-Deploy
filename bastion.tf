@@ -54,7 +54,7 @@ resource "aws_security_group" "Bastion-instanceSG" {
 # ---------------------------------------------------------------------------------------------------------------------
 resource "aws_launch_configuration" "Bastion-LG" {
   # AWS Linux AMI (HVM), SSD Volume Type in us-east-1
-  image_id      = "ami-e532389f"
+  image_id      = "ami-833d2ef9"
   instance_type = "t2.micro"
   security_groups = ["${aws_security_group.Bastion-instanceSG.id}"]
   key_name      = "DAIP-BastionHost"
