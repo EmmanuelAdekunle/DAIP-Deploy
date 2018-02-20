@@ -4,7 +4,7 @@
 # ---------------------------------------------------------------------------------------------------------------------
 resource "aws_launch_configuration" "Drupal-LG" {
   # AWS Linux AMI (HVM), SSD Volume Type in us-east-1
-  image_id      = "ami-26ebbc5c"
+  image_id      = "ami-0d6bf15c7bbd6fc12"
   instance_type = "t2.micro"
   security_groups = ["${aws_security_group.Drupal-instanceSG.id}"]
   key_name      = "DAIP-BastionHost"
@@ -35,7 +35,7 @@ resource "aws_launch_configuration" "Drupal-LG" {
 # ---------------------------------------------------------------------------------------------------------------------
 resource "aws_launch_configuration" "Drools-LG" {
   # AWS Linux AMI (HVM), SSD Volume Type in us-east-1
-  image_id      = "ami-26ebbc5c"
+  image_id      = "ami-0d6bf15c7bbd6fc12"
   instance_type = "t2.micro"
   security_groups = ["${aws_security_group.Drools-instanceSG.id}"]
   key_name      = "DAIP-BastionHost"
@@ -67,7 +67,7 @@ resource "aws_launch_configuration" "Drools-LG" {
 # ---------------------------------------------------------------------------------------------------------------------
 resource "aws_launch_configuration" "Guvnor-LG" {
   # AWS Linux AMI (HVM), SSD Volume Type in us-east-1
-  image_id      = "ami-26ebbc5c"
+  image_id      = "ami-0d6bf15c7bbd6fc12"
   instance_type = "t2.micro"
   security_groups = ["${aws_security_group.Guvnor-instanceSG.id}"]
   key_name      = "DAIP-BastionHost"
@@ -99,7 +99,7 @@ resource "aws_launch_configuration" "Guvnor-LG" {
 # ---------------------------------------------------------------------------------------------------------------------
 resource "aws_launch_configuration" "Dexi-LG" {
   # AWS Linux AMI (HVM), SSD Volume Type in us-east-1
-  image_id      = "ami-26ebbc5c"
+  image_id      = "ami-0d6bf15c7bbd6fc12"
   instance_type = "t2.micro"
   security_groups = ["${aws_security_group.Dexi-instanceSG.id}"]
   key_name      = "DAIP-BastionHost"
@@ -131,7 +131,7 @@ resource "aws_launch_configuration" "Dexi-LG" {
 # ---------------------------------------------------------------------------------------------------------------------
 resource "aws_launch_configuration" "SmartSearch-LG" {
   # AWS Linux AMI (HVM), SSD Volume Type in us-east-1
-  image_id      = "ami-26ebbc5c"
+  image_id      = "ami-0d6bf15c7bbd6fc12"
   instance_type = "t2.micro"
   security_groups = ["${aws_security_group.SmartSearch-instanceSG.id}"]
   key_name      = "DAIP-BastionHost"
