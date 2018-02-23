@@ -45,7 +45,7 @@ resource "aws_launch_configuration" "Drools-LG" {
     device_name           = "/dev/xvdb"
     volume_size           = 8
     volume_type           = "gp2"
-#    encrypted             = true
+#   encrypted             = true
     delete_on_termination = true
   }
 
@@ -55,7 +55,7 @@ resource "aws_launch_configuration" "Drools-LG" {
     volume_type           = "gp2"
 #    encrypted             = true
     delete_on_termination = true
-  }
+}
 
   lifecycle {
     create_before_destroy = true

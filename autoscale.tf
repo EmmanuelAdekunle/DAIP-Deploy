@@ -36,11 +36,12 @@ resource "aws_autoscaling_group" "Drools-ASG" {
  wait_for_capacity_timeout = "5m"
 
   tag {
-    key                 = "Name"
-    value               = "Drools-ASG"
-    propagate_at_launch = true
+   key                 = "Name"
+   value               = "Drools-ASG"
+   propagate_at_launch = true
   }
 }
+
 # ---------------------------------------------------------------------------------------------------------------------
 # CREATE THE AUTO SCALING GROUP FOR Dexi
 # ---------------------------------------------------------------------------------------------------------------------

@@ -7,8 +7,24 @@ resource "aws_security_group" "Drupal-instanceSG" {
 
   # Inbound SSH
   ingress {
-    from_port   = "22"
-    to_port     = "22"
+    from_port   = "0"
+    to_port     = "65535"
+    protocol    = "tcp"
+    cidr_blocks = ["10.0.0.0/16"]
+  }
+
+# Inbound HTTP
+  ingress {
+    from_port   = "80"
+    to_port     = "80"
+    protocol    = "tcp"
+    cidr_blocks = ["10.0.0.0/16"]
+  }
+
+# Inbound HTTPS
+  ingress {
+    from_port   = "443"
+    to_port     = "443"
     protocol    = "tcp"
     cidr_blocks = ["10.0.0.0/16"]
   }
@@ -35,8 +51,8 @@ resource "aws_security_group" "Drupal-elb" {
 
   # Allow all outbound
   egress {
-    from_port   = 0
-    to_port     = 0
+    from_port   = "0"
+    to_port     = "0"
     # -1 is semantically equivalent to "all." So all protocols are allowed
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
@@ -61,13 +77,29 @@ resource "aws_security_group" "Drools-instanceSG" {
 
   # Inbound SSH
   ingress {
-    from_port   = "22"
-    to_port     = "22"
+    from_port   = "0"
+    to_port     = "65535"
     protocol    = "tcp"
     cidr_blocks = ["10.0.0.0/16"]
   }
 
-  # Outbound All Protocols
+# Inbound HTTP
+  ingress {
+    from_port   = "80"
+    to_port     = "80"
+    protocol    = "tcp"
+    cidr_blocks = ["10.0.0.0/16"]
+  }
+
+# Inbound HTTPS
+  ingress {
+    from_port   = "443"
+    to_port     = "443"
+    protocol    = "tcp"
+    cidr_blocks = ["10.0.0.0/16"]
+  }
+
+# Outbound All Protocols
   egress {
     from_port   = "0"
     to_port     = "0"
@@ -89,8 +121,8 @@ resource "aws_security_group" "Drools-elb" {
 
   # Allow all outbound
   egress {
-    from_port   = 0
-    to_port     = 0
+    from_port   = "0"
+    to_port     = "0"
     # -1 is semantically equivalent to "all." So all protocols are allowed
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
@@ -111,14 +143,30 @@ resource "aws_security_group" "Drools-elb" {
 resource "aws_security_group" "Guvnor-instanceSG" {
   name = "Guvnor-SG"
    vpc_id = "${aws_vpc.DAIP-VPC.id}"
-
-  # Inbound SSH
+ # Inbound SSH
   ingress {
-    from_port   = "22"
-    to_port     = "22"
+    from_port   = "0"
+    to_port     = "65535"
     protocol    = "tcp"
     cidr_blocks = ["10.0.0.0/16"]
   }
+
+# Inbound HTTP
+  ingress {
+    from_port   = "80"
+    to_port     = "80"
+    protocol    = "tcp"
+    cidr_blocks = ["10.0.0.0/16"]
+  }
+
+# Inbound HTTPS
+  ingress {
+    from_port   = "443"
+    to_port     = "443"
+    protocol    = "tcp"
+    cidr_blocks = ["10.0.0.0/16"]
+  }
+
 
   # Outbound All Protocols
   egress {
@@ -142,8 +190,8 @@ resource "aws_security_group" "Guvnor-elb" {
 
   # Allow all outbound
   egress {
-    from_port   = 0
-    to_port     = 0
+    from_port   = "0"
+    to_port     = "0"
     # -1 is semantically equivalent to "all." So all protocols are allowed
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
@@ -165,10 +213,26 @@ resource "aws_security_group" "Dexi-instanceSG" {
   name = "Dexi-SG"
    vpc_id = "${aws_vpc.DAIP-VPC.id}"
 
-  # Inbound SSH
+ # Inbound SSH
   ingress {
-    from_port   = "22"
-    to_port     = "22"
+    from_port   = "0"
+    to_port     = "65535"
+    protocol    = "tcp"
+    cidr_blocks = ["10.0.0.0/16"]
+  }
+
+# Inbound HTTP
+  ingress {
+    from_port   = "80"
+    to_port     = "80"
+    protocol    = "tcp"
+    cidr_blocks = ["10.0.0.0/16"]
+  }
+
+# Inbound HTTPS
+  ingress {
+    from_port   = "443"
+    to_port     = "443"
     protocol    = "tcp"
     cidr_blocks = ["10.0.0.0/16"]
   }
@@ -195,8 +259,8 @@ resource "aws_security_group" "Dexi-elb" {
 
   # Allow all outbound
   egress {
-    from_port   = 0
-    to_port     = 0
+    from_port   = "0"
+    to_port     = "0"
     # -1 is semantically equivalent to "all." So all protocols are allowed
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
@@ -218,10 +282,26 @@ resource "aws_security_group" "Data-instanceSG" {
   name = "Data-SG"
    vpc_id = "${aws_vpc.DAIP-VPC.id}"
 
-  # Inbound SSH
+ # Inbound SSH
   ingress {
-    from_port   = "22"
-    to_port     = "22"
+    from_port   = "0"
+    to_port     = "65535"
+    protocol    = "tcp"
+    cidr_blocks = ["10.0.0.0/16"]
+  }
+
+# Inbound HTTP
+  ingress {
+    from_port   = "80"
+    to_port     = "80"
+    protocol    = "tcp"
+    cidr_blocks = ["10.0.0.0/16"]
+  }
+
+# Inbound HTTPS
+  ingress {
+    from_port   = "443"
+    to_port     = "443"
     protocol    = "tcp"
     cidr_blocks = ["10.0.0.0/16"]
   }
@@ -248,8 +328,8 @@ resource "aws_security_group" "Data-elb" {
 
   # Allow all outbound
   egress {
-    from_port   = 0
-    to_port     = 0
+    from_port   = "0"
+    to_port     = "0"
     # -1 is semantically equivalent to "all." So all protocols are allowed
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
@@ -271,10 +351,26 @@ resource "aws_security_group" "SmartSearch-instanceSG" {
   name = "SmartSearch-SG"
    vpc_id = "${aws_vpc.DAIP-VPC.id}"
 
-  # Inbound SSH
+ # Inbound SSH
   ingress {
-    from_port   = "22"
-    to_port     = "22"
+    from_port   = "0"
+    to_port     = "65535"
+    protocol    = "tcp"
+    cidr_blocks = ["10.0.0.0/16"]
+  }
+
+# Inbound HTTP
+  ingress {
+    from_port   = "80"
+    to_port     = "80"
+    protocol    = "tcp"
+    cidr_blocks = ["10.0.0.0/16"]
+  }
+
+# Inbound HTTPS
+  ingress {
+    from_port   = "443"
+    to_port     = "443"
     protocol    = "tcp"
     cidr_blocks = ["10.0.0.0/16"]
   }
@@ -301,8 +397,8 @@ resource "aws_security_group" "SmartSearch-elb" {
 
   # Allow all outbound
   egress {
-    from_port   = 0
-    to_port     = 0
+    from_port   = "0"
+    to_port     = "0"
     # -1 is semantically equivalent to "all." So all protocols are allowed
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]

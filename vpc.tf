@@ -1,6 +1,5 @@
 # ---------------------------------------------------------------------------------------------------------------------
-# GET THE LIST OF availability ZONES IN THE CURRENT REGION
-# Every AWS accout has slightly different availability zones in each region.
+#This will create the Application VPC for the FEMA DAIP Project. #
 # ---------------------------------------------------------------------------------------------------------------------
 data "aws_availability_zones" "all" {}
 
